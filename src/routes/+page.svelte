@@ -137,7 +137,7 @@
                         technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
                     }
                 {/each}
-                . I am interested in learning other technologies such as Ruby, React, Svelte, and .</p>
+                . I am interested in the opportunity of using technologies like Ruby, React, and Svelte on a.</p>
                 <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
                 <p>Please contact me if you are interested in collaborating or chatting.</p>
             </div>

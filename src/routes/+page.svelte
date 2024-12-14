@@ -114,7 +114,7 @@
         <div class='main__me'>
             <h1 class='main__me__title' id='about-me'>About Me</h1>
             <p>
-                My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day I work with fullstack web development technologies such as:
+                My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day, I work with fullstack web development technologies such as:
             </p>
             <ul>
                 {#each technologies.filter(technology => technology.usedAtWork) as technology }
@@ -186,7 +186,17 @@ a {
 .main {
     padding: 0 40px;
 
+    &__me {
+        min-height: max(100vh, 400px);
+
+        &__title {
+            text-align: center;
+        }
+    }
+
     &__portfolio {
+        min-height: max(100vh, 400px);
+
         display: flex;
         flex-direction: column;
         flex-grow: 1;

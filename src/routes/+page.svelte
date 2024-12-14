@@ -4,7 +4,16 @@
             id: 'discord-bot',
             name: 'Discord Youtube Bot',
             description: 'This is a discord bot that will join your channel and will play the audio from the youtube link that you provided. I built this so that I could play music with my friend on Minecraft and on Stardew Valley, until we found out that Discord actually lets other people listen to whatever you are listening on Spotify :) so all this wasn\'t necessary.',
-            technologies: ['Python', 'Discord.py'],
+            technologies: [
+                {
+                    text: 'Python',
+                    url: 'https://www.python.org/'
+                },
+                {
+                    text: 'Discord.py',
+                    url: 'https://discordpy.readthedocs.io/en/stable/'
+                }
+            ],
             links: [
                 {
                     url: 'https://github.com/matchagreen/barista-bot'
@@ -17,7 +26,16 @@
             id: 'connect-4',
             name: 'Connect 4',
             description: 'This is a server-client based Connect 4 game. The server provides the rules of the game, as well as an opponent to the player, while the client serves as an interface where the user can make their moves and see the status of the game. A star is shown at the bottom of the grid to indicate the last movement done for clarity.',
-            technologies: ['PHP', 'Dart'],
+            technologies: [
+                {
+                    url: 'https://www.php.net/',
+                    text: 'PHP'
+                },
+                {
+                    url: 'https://dart.dev/',
+                    text: 'Dart'
+                }
+            ],
             links: [
                 {
                     url: 'https://github.com/matchagreen/Connect-4-Server',
@@ -35,7 +53,16 @@
             id: 'can-bus-visualizer',
             name: 'CAN Bus Visualizer',
             description: 'This is a web application written in React and Typescript. It allows an analyst to view information gathered from the CAN Bus of a vehicle. It displays the traffic gathered from the vehicle in a table, and it shows the sensors as nodes on a map (used Reactflow for the diagram). I lead the Front end team responsible for the look and feel of the application, and collaborated with the Backend team to define the API calls.',
-            technologies: ['React', 'Typescript'],
+            technologies: [
+                {
+                    url: 'https://react.dev/',
+                    text: 'React.js'
+                },
+                {
+                    url: 'https://www.typescriptlang.org/',
+                    text: 'Typescript'
+                }
+            ],
             links: [
                 {
                     url: 'https://github.com/iarivas/CS4311_CANBusVisualizer_Team_6'
@@ -48,7 +75,16 @@
             id: 'quiz-app',
             name: 'Quiz App',
             description: 'This is a mobile multi-platform app. It obtains a list of questions from the University of Texas at El Paso\'s server. A user can then select a number of random questions to answer and receive a score and feedback at the end. It requires a user to authenticate themselves.',
-            technologies: ['Dart', 'Flutter'],
+            technologies: [
+                {
+                    url: 'https://dart.dev/',
+                    text: 'Dart'
+                },
+                {
+                    url: 'https://flutter.dev/',
+                    text: 'Flutter'
+                }
+            ],
             links: [
                 {
                     url: 'https://github.com/matchagreen/quiz_app'
@@ -165,6 +201,17 @@
                                             <span>, </span>
                                         {/if}
                                         <a href={link.url} target='_blank'>{link.text ?? 'Repository'}</a>
+                                    {/each}
+                                </div>
+                            {/if}
+                            {#if project.technologies?.length}
+                                <div class='main__portfolio__project__content__description__technologies' >
+                                    <span>Technologies:</span>
+                                    {#each project.technologies as technology, index }
+                                        {#if index > 0}
+                                            <span>, </span>
+                                        {/if}
+                                        <a href={technology.url} target='_blank'>{technology.text}</a>
                                     {/each}
                                 </div>
                             {/if}

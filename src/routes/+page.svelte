@@ -56,7 +56,7 @@
             technologies: [
                 {
                     url: 'https://react.dev/',
-                    text: 'React.js'
+                    text: 'React'
                 },
                 {
                     url: 'https://www.typescriptlang.org/',
@@ -146,36 +146,36 @@
         }
     ]
 
+    $: technologiesUsedAtWork = technologies.filter(technology => technology.usedAtWork);
     $: technologiesNotUsedAtWork = technologies.filter(technology => !technology.usedAtWork);
 </script>
 
 <div class='app'>
     <div class='main'>
         <div class='main__me'>
-            <div class='main__me__card'>
-                <div class='main__me__title' id='about-me'>About Me</div>
-                <p>
-                    My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day, I work with fullstack web development technologies such as:
-                </p>
-                <ul>
-                    {#each technologies.filter(technology => technology.usedAtWork) as technology }
-                        <li>
-                            <a href={technology.link} target='_blank'>{ technology.name}</a>
-                        </li>
+            <div class='main__me__content'>
+                <div class='main__me__content__card'>
+                    <div class='main__me__content__card__title' id='about-me'>About Me</div>
+                    <p>
+                        My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day, I work with fullstack web development technologies such as
+                        {#each technologiesUsedAtWork as technology, index }
+                        { index > 0 ? index < technologiesUsedAtWork.length - 1 ? ', ' : ' and ' : '' }
+                        <a href={technology.link} target='_blank'>{ technology.name}</a>
                     {/each}
-                </ul>
-                <p>But I am also familiar with other technologies such as
-                {#each technologiesNotUsedAtWork as technology, idx}
-                    <a href={ technology.link }>
-                        { technology.name }
-                    </a>{
-                        technologiesNotUsedAtWork.length === idx + 1 ? '' :
-                        technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
-                    }
-                {/each}
-                . I am interested in the opportunity of using technologies like Ruby, React, and Svelte on a.</p>
-                <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
-                <p>Please contact me if you are interested in collaborating or chatting.</p>
+                    </p>
+                    <p>I am also familiar with other technologies such as
+                    {#each technologiesNotUsedAtWork as technology, idx}
+                        <a href={ technology.link }>
+                            { technology.name }
+                        </a>{
+                            technologiesNotUsedAtWork.length === idx + 1 ? '' :
+                            technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
+                        }
+                    {/each}
+                    . I am interested in the opportunity of using technologies like Ruby, React, and Svelte.</p>
+                    <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
+                    <p>Please contact me if you are interested in collaborating or chatting.</p>
+                </div>
             </div>
         </div>
         <div class='main__portfolio'>
@@ -253,18 +253,25 @@ a {
     &__me {
         padding: 40px 60px;
         min-height: max(100vh, 400px);
+        box-sizing: border-box;
 
-        &__card {
-            background-color: #1c1c1fcc;
-            padding: 0 30px 10px;
-            border-radius: 5px;
-        }
+        &__content {
+            display: flex;
+            justify-content: center;
 
-        &__title {
-            text-align: center;
-            font-size: 38px;
-            line-height: 40px;
-            padding: 21px 0 21px;
+            &__card {
+                max-width: 900px;
+                background-color: #1c1c1fcc;
+                padding: 0 30px 10px;
+                border-radius: 5px;
+
+                &__title {
+                    text-align: center;
+                    font-size: 38px;
+                    line-height: 40px;
+                    padding: 21px 0 21px;
+                }
+            }
         }
     }
 
@@ -324,7 +331,6 @@ a {
                     min-width: 400px;
                     max-width: 400px;
                     object-fit: contain;
-                    border-radius: 5px;
                 }
             }
 

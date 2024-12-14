@@ -10,7 +10,8 @@
                     url: 'https://github.com/matchagreen/barista-bot'
                 }
             ],
-            image: 'discord-bot.jpg'
+            image: 'discord-bot.jpg',
+            alt: 'Matcha drink'
         },
         {
             id: 'connect-4',
@@ -27,7 +28,8 @@
                     text: 'Client'
                 }
             ],
-            image: 'connect-4.jpg'
+            image: 'connect-4.jpg',
+            alt: 'Connect 4 game being played on a terminal'
         },
         {
             id: 'can-bus-visualizer',
@@ -39,7 +41,8 @@
                     url: 'https://github.com/iarivas/CS4311_CANBusVisualizer_Team_6'
                 }
             ],
-            image: 'can-bus-visualizer.png'
+            image: 'can-bus-visualizer.png',
+            alt: 'Screen of a website showing nodes and message data from a CAN Bus'
         },
         {
             id: 'quiz-app',
@@ -51,7 +54,8 @@
                     url: 'https://github.com/matchagreen/quiz_app'
                 }
             ],
-            image: 'quiz-app.png'
+            image: 'quiz-app.png',
+            alt: 'Screenshot of a mobile app where a user is prompted to answer questions on a quiz'
         }
     ];
 
@@ -112,29 +116,31 @@
 <div class='app'>
     <div class='main'>
         <div class='main__me'>
-            <h1 class='main__me__title' id='about-me'>About Me</h1>
-            <p>
-                My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day, I work with fullstack web development technologies such as:
-            </p>
-            <ul>
-                {#each technologies.filter(technology => technology.usedAtWork) as technology }
-                    <li>
-                        <a href={technology.link} target='_blank'>{ technology.name}</a>
-                    </li>
+            <div class='main__me__card'>
+                <h1 class='main__me__title' id='about-me'>About Me</h1>
+                <p>
+                    My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day, I work with fullstack web development technologies such as:
+                </p>
+                <ul>
+                    {#each technologies.filter(technology => technology.usedAtWork) as technology }
+                        <li>
+                            <a href={technology.link} target='_blank'>{ technology.name}</a>
+                        </li>
+                    {/each}
+                </ul>
+                <p>But I am also familiar with other technologies such as
+                {#each technologiesNotUsedAtWork as technology, idx}
+                    <a href={ technology.link }>
+                        { technology.name }
+                    </a>{
+                        technologiesNotUsedAtWork.length === idx + 1 ? '' :
+                        technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
+                    }
                 {/each}
-            </ul>
-            <p>But I am also familiar with other technologies such as
-            {#each technologiesNotUsedAtWork as technology, idx}
-                <a href={ technology.link }>
-                    { technology.name }
-                </a>{
-                    technologiesNotUsedAtWork.length === idx + 1 ? '' :
-                    technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
-                }
-            {/each}
-            . I am interested in learning other technologies such as Ruby, React, Svelte, and .</p>
-            <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
-            <p>Please contact me if you are interested in collaborating or chatting.</p>
+                . I am interested in learning other technologies such as Ruby, React, Svelte, and .</p>
+                <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
+                <p>Please contact me if you are interested in collaborating or chatting.</p>
+            </div>
         </div>
         <div class='main__portfolio'>
             <h1 class='main__portfolio__title'>Portfolio</h1>
@@ -160,6 +166,7 @@
                     <img
                         class='main__portfolio__project__image'
                         src={ project.image }
+                        alt={ project.alt }
                     />
                 </div>
             {/each}
@@ -179,15 +186,27 @@ a {
     background-color: #1c1c1f;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
-    display: flex;
-    min-height: 100vh;
+    line-height: 24px;
+    min-height: max(100vh, 400px);
 }
 
 .main {
-    padding: 0 40px;
+    min-width: 400px;
+    background-image: url('iceland2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 
     &__me {
+        padding: 40px 60px;
         min-height: max(100vh, 400px);
+
+        &__card {
+            background-color: #1c1c1f;
+            padding: 10px 30px;
+            border-radius: 5px;
+        }
 
         &__title {
             text-align: center;
@@ -195,7 +214,8 @@ a {
     }
 
     &__portfolio {
-        min-height: max(100vh, 400px);
+        padding: 0 40px;
+        background-color: #1c1c1f;
 
         display: flex;
         flex-direction: column;
@@ -208,6 +228,7 @@ a {
         &__project {
             display: flex;
             justify-content: space-between;
+            min-height: 500px;
 
             &__description {
                 max-width: 600px;
@@ -220,7 +241,8 @@ a {
 
             &__image {
                 max-height: 300px;
-                max-width: 300px;
+                max-width: 400px;
+                object-fit: contain;
                 border-radius: 5px;
             }
         }

@@ -180,7 +180,7 @@
         </div>
         <div class='main__portfolio'>
             <div class='main__portfolio__title'>Portfolio</div>
-            {#each projects as project}
+            {#each projects as project, index}
                 <div class='main__portfolio__project'>
                     <div class='main__portfolio__project__title'>
                         [ { project.name } ]
@@ -217,6 +217,9 @@
                             {/if}
                         </div>
                     </div>
+                    {#if index < projects.length - 1}
+                        <div class='main__portfolio__project__divider'></div>
+                    {/if}
                 </div>
             {/each}
         </div>
@@ -281,6 +284,10 @@ a {
         }
 
         &__project {
+            padding: 20px 0 0;
+            display: flex;
+            flex-direction: column;
+
             &__title {
                 font-size: 24px;
                 line-height: 28px;
@@ -319,6 +326,13 @@ a {
                     object-fit: contain;
                     border-radius: 5px;
                 }
+            }
+
+            &__divider {
+                height: 1px;
+                width: 70%;
+                align-self: center;
+                background-color: rgba(237, 234, 226, 0.417);
             }
         }
     }

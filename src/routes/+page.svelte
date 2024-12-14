@@ -7,8 +7,7 @@
             technologies: ['Python', 'Discord.py'],
             links: [
                 {
-                    url: 'https://github.com/matchagreen/barista-bot',
-                    text: 'Repository'
+                    url: 'https://github.com/matchagreen/barista-bot'
                 }
             ],
             image: 'discord-bot.jpg'
@@ -18,7 +17,16 @@
             name: 'Connect 4',
             description: 'This is a server-client based Connect 4 game. The server provides the rules of the game, as well as an opponent to the player, while the client serves as an interface where the user can make their moves and see the status of the game. A star is shown at the bottom of the grid to indicate the last movement done for clarity.',
             technologies: ['PHP', 'Dart'],
-            links: [],
+            links: [
+                {
+                    url: 'https://github.com/matchagreen/Connect-4-Server',
+                    text: 'Server'
+                },
+                {
+                    url: 'https://github.com/matchagreen/Connect-4-Client',
+                    text: 'Client'
+                }
+            ],
             image: 'connect-4.jpg'
         },
         {
@@ -26,7 +34,11 @@
             name: 'CAN Bus Visualizer',
             description: 'This is a web application written in React and Typescript. It allows an analyst to view information gathered from the CAN Bus of a vehicle. It displays the traffic gathered from the vehicle in a table, and it shows the sensors as nodes on a map (used Reactflow for the diagram). I lead the Front end team responsible for the look and feel of the application, and collaborated with the Backend team to define the API calls.',
             technologies: ['React', 'Typescript'],
-            links: [],
+            links: [
+                {
+                    url: 'https://github.com/iarivas/CS4311_CANBusVisualizer_Team_6'
+                }
+            ],
             image: 'can-bus-visualizer.png'
         },
         {
@@ -34,7 +46,11 @@
             name: 'Quiz App',
             description: 'This is a mobile multi-platform app. It obtains a list of questions from the University of Texas at El Paso\'s server. A user can then select a number of random questions to answer and receive a score and feedback at the end. It requires a user to authenticate themselves.',
             technologies: ['Dart', 'Flutter'],
-            links: [],
+            links: [
+                {
+                    url: 'https://github.com/matchagreen/quiz_app'
+                }
+            ],
             image: 'quiz-app.png'
         }
     ];
@@ -121,7 +137,7 @@
             <p>Please contact me if you are interested in collaborating or chatting.</p>
         </div>
         <div class='main__portfolio'>
-            <h1>Portfolio</h1>
+            <h1 class='main__portfolio__title'>Portfolio</h1>
             {#each projects as project}
                 <h2>
                     [ { project.name } ]
@@ -132,8 +148,11 @@
                         {#if project.links?.length}
                             <div class='main__portfolio__project__description__links' >
                                 <span>Links:</span>
-                                {#each project.links as link}
-                                    <a href={link.url} target='_blank'>{link.text}</a>
+                                {#each project.links as link, index }
+                                    {#if index > 0}
+                                        <span>, </span>
+                                    {/if}
+                                    <a href={link.url} target='_blank'>{link.text ?? 'Repository'}</a>
                                 {/each}
                             </div>
                         {/if}
@@ -165,25 +184,35 @@ a {
 }
 
 .main {
-    padding: 0 30px;
+    padding: 0 40px;
 
-    &__portfolio__project {
+    &__portfolio {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        flex-grow: 1;
 
-        &__description {
-            max-width: 600px;
-            padding-right: 50px;
-
-            &__links {
-                margin-top: 20px;
-            }
+        &__title {
+            text-align: center;
         }
 
-        &__image {
-            max-height: 300px;
-            max-width: 300px;
-            border-radius: 5px;
+        &__project {
+            display: flex;
+            justify-content: space-between;
+
+            &__description {
+                max-width: 600px;
+                padding-right: 50px;
+
+                &__links {
+                    margin-top: 20px;
+                }
+            }
+
+            &__image {
+                max-height: 300px;
+                max-width: 300px;
+                border-radius: 5px;
+            }
         }
     }
 }

@@ -117,7 +117,7 @@
     <div class='main'>
         <div class='main__me'>
             <div class='main__me__card'>
-                <h1 class='main__me__title' id='about-me'>About Me</h1>
+                <div class='main__me__title' id='about-me'>About Me</div>
                 <p>
                     My name is Alan Perez, and I am a Software Engineer at Bloomberg. In my day to day, I work with fullstack web development technologies such as:
                 </p>
@@ -143,31 +143,33 @@
             </div>
         </div>
         <div class='main__portfolio'>
-            <h1 class='main__portfolio__title'>Portfolio</h1>
+            <div class='main__portfolio__title'>Portfolio</div>
             {#each projects as project}
-                <h2>
-                    [ { project.name } ]
-                </h2>
                 <div class='main__portfolio__project'>
-                    <div class='main__portfolio__project__description'>
-                        <div>{ project.description }</div>
-                        {#if project.links?.length}
-                            <div class='main__portfolio__project__description__links' >
-                                <span>Links:</span>
-                                {#each project.links as link, index }
-                                    {#if index > 0}
-                                        <span>, </span>
-                                    {/if}
-                                    <a href={link.url} target='_blank'>{link.text ?? 'Repository'}</a>
-                                {/each}
-                            </div>
-                        {/if}
+                    <div class='main__portfolio__project__title'>
+                        [ { project.name } ]
                     </div>
-                    <img
-                        class='main__portfolio__project__image'
-                        src={ project.image }
-                        alt={ project.alt }
-                    />
+                    <div class='main__portfolio__project__content'>
+                        <div class='main__portfolio__project__content__description'>
+                            <div>{ project.description }</div>
+                            {#if project.links?.length}
+                                <div class='main__portfolio__project__content__description__links' >
+                                    <span>Links:</span>
+                                    {#each project.links as link, index }
+                                        {#if index > 0}
+                                            <span>, </span>
+                                        {/if}
+                                        <a href={link.url} target='_blank'>{link.text ?? 'Repository'}</a>
+                                    {/each}
+                                </div>
+                            {/if}
+                        </div>
+                        <img
+                            class='main__portfolio__project__content__image'
+                            src={ project.image }
+                            alt={ project.alt }
+                        />
+                    </div>
                 </div>
             {/each}
         </div>
@@ -203,13 +205,16 @@ a {
         min-height: max(100vh, 400px);
 
         &__card {
-            background-color: #1c1c1f;
-            padding: 10px 30px;
+            background-color: #1c1c1fcc;
+            padding: 0 30px 10px;
             border-radius: 5px;
         }
 
         &__title {
             text-align: center;
+            font-size: 38px;
+            line-height: 40px;
+            padding: 21px 0 21px;
         }
     }
 
@@ -222,28 +227,41 @@ a {
         flex-grow: 1;
 
         &__title {
+            font-size: 38px;
+            line-height: 40px;
+            padding: 21px 0;
             text-align: center;
         }
 
         &__project {
-            display: flex;
-            justify-content: space-between;
-            min-height: 500px;
-
-            &__description {
-                max-width: 600px;
-                padding-right: 50px;
-
-                &__links {
-                    margin-top: 20px;
-                }
+            &__title {
+                font-size: 24px;
+                line-height: 28px;
+                padding: 21px 0;
+                text-align: center;
             }
 
-            &__image {
-                max-height: 300px;
-                max-width: 400px;
-                object-fit: contain;
-                border-radius: 5px;
+            &__content {
+                padding-top: 10px;
+                display: flex;
+                justify-content: space-between;
+                min-height: 500px;
+
+                &__description {
+                    max-width: 600px;
+                    padding-right: 50px;
+
+                    &__links {
+                        margin-top: 20px;
+                    }
+                }
+
+                &__image {
+                    max-height: 300px;
+                    max-width: 400px;
+                    object-fit: contain;
+                    border-radius: 5px;
+                }
             }
         }
     }

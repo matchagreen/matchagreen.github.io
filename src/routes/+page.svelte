@@ -174,39 +174,16 @@ a {
         &__description {
             max-width: 600px;
             padding-right: 50px;
+
+            &__links {
+                margin-top: 20px;
+            }
         }
 
         &__image {
             max-height: 300px;
             max-width: 300px;
             border-radius: 5px;
-        }
-    }
-}
-
-.sidebar {
-    flex-direction: column;
-    padding-top: 50px;
-    min-width: 230px;
-
-    &__section {
-        display: flex;
-        flex-direction: column;
-        padding: 10px 30px;
-
-        &__title {
-            padding: 10px;
-            border-bottom: 1px grey solid;
-        }
-
-        &__link {
-            display: inline-block;
-            padding: 10px 10px 5px 10px;
-
-            &::after {
-                content: '';
-                background-image: url(right-arrow.svg);
-            }
         }
     }
 }

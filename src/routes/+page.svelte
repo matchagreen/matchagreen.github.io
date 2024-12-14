@@ -150,6 +150,11 @@
                         [ { project.name } ]
                     </div>
                     <div class='main__portfolio__project__content'>
+                        <img
+                            class='main__portfolio__project__content__image'
+                            src={ project.image }
+                            alt={ project.alt }
+                        />
                         <div class='main__portfolio__project__content__description'>
                             <div>{ project.description }</div>
                             {#if project.links?.length}
@@ -164,11 +169,6 @@
                                 </div>
                             {/if}
                         </div>
-                        <img
-                            class='main__portfolio__project__content__image'
-                            src={ project.image }
-                            alt={ project.alt }
-                        />
                     </div>
                 </div>
             {/each}
@@ -247,9 +247,18 @@ a {
                 justify-content: space-between;
                 min-height: 500px;
 
+                @media screen and (max-width: 600px) {
+                    flex-direction: column;
+                }
+
                 &__description {
                     max-width: 600px;
-                    padding-right: 50px;
+                    padding-left: 50px;
+
+                    @media screen and (max-width: 600px) {
+                        padding: 30px 0;
+
+                    }
 
                     &__links {
                         margin-top: 20px;
@@ -257,7 +266,9 @@ a {
                 }
 
                 &__image {
+                    min-height: 300px;
                     max-height: 300px;
+                    min-width: 400px;
                     max-width: 400px;
                     object-fit: contain;
                     border-radius: 5px;

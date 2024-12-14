@@ -252,7 +252,6 @@ a {
                 }
 
                 &__description {
-                    max-width: 600px;
                     padding-left: 50px;
 
                     @media screen and (max-width: 600px) {

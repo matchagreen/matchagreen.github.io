@@ -146,6 +146,35 @@
         }
     ]
 
+    const icons = [
+        {
+            icon: 'github.svg',
+            url: 'https://github.com/matchagreen',
+            alt: 'Github icon'
+        },
+        {
+            icon: 'linkedin.svg',
+            url: '',
+            alt: 'Linkedin icon'
+        },
+        {
+            icon: 'email.svg',
+            url: '',
+            alt: 'Email icon'
+        },
+    ]
+
+    function makeBEM(className, modifiers) {
+        return [
+            className,
+            ...Object.entries(modifiers).filter(([, apply]) =>
+                apply
+            ).map(([modifier]) =>
+                modifier
+            ).map(modifier => `${className}--${modifier}`)
+        ].join(' ');
+    }
+
     $: technologiesUsedAtWork = technologies.filter(technology => technology.usedAtWork);
     $: technologiesNotUsedAtWork = technologies.filter(technology => !technology.usedAtWork);
 </script>
@@ -175,6 +204,17 @@
                     . I am interested in the opportunity of using technologies like Ruby, React, and Svelte.</p>
                     <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
                     <p>Please contact me if you are interested in collaborating or chatting.</p>
+                    <div class='main__me__content__card__icons'>
+                        {#each icons as {icon, url, alt}}
+                            <a href={ url } target='_blank' class='main__me__content__card__icons__icon'>
+                                <img
+                                    class='main__me__content__card__icons__icon__image'
+                                    src={ icon }
+                                    alt={ alt }
+                                />
+                            </a>
+                        {/each}
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,7 +302,7 @@ a {
             &__card {
                 max-width: 900px;
                 background-color: #1c1c1fcc;
-                padding: 0 30px 10px;
+                padding: 0 30px 30px;
                 border-radius: 5px;
 
                 &__title {
@@ -270,6 +310,19 @@ a {
                     font-size: 38px;
                     line-height: 40px;
                     padding: 21px 0 21px;
+                }
+
+                &__icons {
+                    &__icon {
+                        margin-right: 20px; // TODO: Don't apply this to the last element
+
+                        &__image {
+                            height: 30px;
+                            width: 30px;
+                            background-repeat: no-repeat;
+                            background-size: cover; 
+                        }
+                    }
                 }
             }
         }

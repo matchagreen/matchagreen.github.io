@@ -154,12 +154,12 @@
         },
         {
             icon: 'linkedin.svg',
-            url: '',
+            url: 'https://www.linkedin.com/in/alan-perez-520780207/',
             alt: 'Linkedin icon'
         },
         {
             icon: 'email.svg',
-            url: '',
+            url: 'mailto:alanperezse@gmail.com',
             alt: 'Email icon'
         },
     ]

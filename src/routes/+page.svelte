@@ -304,11 +304,11 @@ a {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     line-height: 24px;
-    min-height: max(100vh, 400px);
+    min-height: max(100vh, 700px);
+    min-width: 400px;
 }
 
 .main {
-    min-width: 400px;
     background-image: url('/iceland2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -384,6 +384,7 @@ a {
                 padding-top: 10px;
                 display: flex;
                 min-height: 500px;
+                justify-content: start;
 
                 @media screen and (max-width: 600px) {
                     flex-direction: column;
@@ -394,7 +395,6 @@ a {
 
                     @media screen and (max-width: 600px) {
                         padding: 30px 0;
-
                     }
 
                     &__links {
@@ -403,11 +403,16 @@ a {
                 }
 
                 &__image {
+                    flex-grow: 1;
                     min-height: 300px;
                     max-height: 300px;
-                    min-width: 400px;
-                    max-width: 400px;
+                    min-width: 200px;
+                    max-width: min(70%, 400px);
                     object-fit: contain;
+
+                    @media screen and (max-width: 600px) {
+                        align-self: center;
+                    }
                 }
             }
 

@@ -24,7 +24,7 @@
         },
         {
             id: 'portfolio',
-            name: 'Portfolio Website',
+            name: 'Personal Website',
             description: 'So recursive! This is a static Svelte application that uses a javascript config object to generate a lot of the elements on the page. This could have arguably been a pure Javascript, HTML, and CSS page but I wanted an excuse to try out Svelte.',
             technologies: [
                 {

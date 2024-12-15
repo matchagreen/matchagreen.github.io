@@ -309,7 +309,7 @@ a {
 
 .main {
     min-width: 400px;
-    background-image: url('iceland2.jpg');
+    background-image: url('/iceland2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

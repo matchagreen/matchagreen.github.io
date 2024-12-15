@@ -23,6 +23,27 @@
             alt: 'Matcha drink'
         },
         {
+            id: 'portfolio',
+            name: 'Portfolio Website',
+            description: 'So recursive! This is a static Svelte application that uses a javascript config object to generate a lot of the elements on the page. This could have arguably been a pure Javascript, HTML, and CSS page but I wanted an excuse to try out Svelte.',
+            technologies: [
+                {
+                    text: 'Svelte',
+                    url: 'https://svelte.dev'
+                },
+                {
+                    text: 'Sass',
+                    url: 'https://sass-lang.com'
+                }
+            ],
+            links: [
+                {
+                    url: 'https://github.com/matchagreen/matchagreen.github.io'
+                }
+            ],
+            image: 'portfolio.png'
+        },
+        {
             id: 'connect-4',
             name: 'Connect 4',
             description: 'This is a server-client based Connect 4 game. The server provides the rules of the game, as well as an opponent to the player, while the client serves as an interface where the user can make their moves and see the status of the game. A star is shown at the bottom of the grid to indicate the last movement done for clarity.',
@@ -201,9 +222,9 @@
                             technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
                         }
                     {/each}
-                    . I am interested in the opportunity of using technologies like Ruby, React, and Svelte.</p>
+                    , but I am always open to learning new technologies.</p>
                     <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
-                    <p>Please contact me if you are interested in collaborating or chatting.</p>
+                    <p>Feel free to contact me if you are interested in collaborating or chatting.</p>
                     <div class='main__me__content__card__icons'>
                         {#each icons as {icon, url, alt}}
                             <a href={ url } target='_blank' class='main__me__content__card__icons__icon'>
@@ -262,6 +283,10 @@
                     {/if}
                 </div>
             {/each}
+        </div>
+
+        <div class='main__disclaimer'>
+            Background image provided by Unsplash. Made with &lt;3
         </div>
     </div>
 </div>
@@ -358,7 +383,6 @@ a {
             &__content {
                 padding-top: 10px;
                 display: flex;
-                justify-content: space-between;
                 min-height: 500px;
 
                 @media screen and (max-width: 600px) {
@@ -394,6 +418,13 @@ a {
                 background-color: rgba(237, 234, 226, 0.417);
             }
         }
+    }
+
+    &__disclaimer {
+        font-size: 11px;
+        color: rgba(237, 234, 226, 0.417);
+        padding-left: 5px;
+        background-color: black;
     }
 }
 </style>

@@ -212,8 +212,7 @@
                         { index > 0 ? index < technologiesUsedAtWork.length - 1 ? ', ' : ' and ' : '' }
                         <a href={technology.link} target='_blank'>{ technology.name}</a>
                     {/each}
-                    </p>
-                    <p>I am also familiar with other technologies such as
+                    . I am also familiar with technologies like
                     {#each technologiesNotUsedAtWork as technology, idx}
                         <a href={ technology.link }>
                             { technology.name }
@@ -222,7 +221,9 @@
                             technologiesNotUsedAtWork.length === idx + 2 ? ' and ' : ', '
                         }
                     {/each}
-                    , but I am always open to learning new technologies.</p>
+                    , and I am always open to learn more.
+                    </p>
+                    <p></p>
                     <p>I would like to contribute to companies and projects that promote welfare, or otherwise make a positive wholesome impact.</p>
                     <p>Feel free to contact me if you are interested in collaborating or chatting.</p>
                     <div class='main__me__content__card__icons'>
